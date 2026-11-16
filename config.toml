@@ -18,6 +18,9 @@ device = "auto"      # auto | cuda | cpu
 language = "en"      # "" = auto-detect
 # Optional hint with names / jargon you say often, e.g. "Kubernetes, Citrix, SAP, Jira"
 prompt = ""
+# Example text whose writing style Whisper imitates. A punctuated sentence here is what
+# makes the output come out punctuated and capitalised. Write it in the language you dictate in.
+style_prompt = "Hello, thanks for joining. Let's get started: first, the update. Is everything ready? Yes, it is."
 
 [audio]
 device = ""          # "" = default microphone; otherwise a name or index from --list-devices

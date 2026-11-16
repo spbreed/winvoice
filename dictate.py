@@ -28,6 +28,8 @@ BLOCK = 1600            # 100 ms audio blocks
 PREROLL_BLOCKS = 3      # keep 300 ms before the key press so the first word isn't clipped
 MIN_SECONDS = 0.4
 MAX_SECONDS = 180
+DEFAULT_STYLE_PROMPT = ("Hello, thanks for joining. Let's get started: first, the update. "
+                        "Is everything ready? Yes, it is.")
 
 
 def log(msg):
@@ -50,7 +52,10 @@ class Transcriber:
         from faster_whisper import WhisperModel
 
         self.language = cfg.get("language") or None
-        self.prompt = cfg.get("prompt") or None
+        # Whisper copies the writing style of its prompt, so a punctuated example
+        # makes it punctuate and capitalise reliably - at no extra compute cost.
+        style = cfg.get("style_prompt", DEFAULT_STYLE_PROMPT)
+        self.prompt = " ".join(x for x in (style, cfg.get("prompt")) if x) or None
         want_device = cfg.get("device", "auto")
         want_model = cfg.get("model", "auto")
         attempts = []
