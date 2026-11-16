@@ -1,0 +1,39 @@
+# VoiceKeys settings. Restart the app after editing.
+
+[hotkey]
+# Key that controls recording. One of: right_ctrl, left_ctrl, right_alt, left_alt,
+# right_shift, right_win, menu, insert, caps_lock, scroll_lock, f1 .. f12
+# The key is NOT blocked, so it also reaches the focused app - modifier keys
+# (right_ctrl, right_alt) are the safest choice.
+key = "right_ctrl"
+# "hold"   = record while the key is held, type on release
+# "toggle" = tap once to start, tap again to stop and type
+mode = "hold"
+
+[whisper]
+# "auto" picks large-v3-turbo on an NVIDIA GPU, small.en / small on CPU.
+# Or name one yourself: tiny.en, base.en, small.en, medium.en, large-v3-turbo, large-v3 ...
+model = "auto"
+device = "auto"      # auto | cuda | cpu
+language = "en"      # "" = auto-detect
+# Optional hint with names / jargon you say often, e.g. "Kubernetes, Citrix, SAP, Jira"
+prompt = ""
+
+[audio]
+device = ""          # "" = default microphone; otherwise a name or index from --list-devices
+beep = true          # short beeps when recording starts / stops
+
+[typing]
+# "scancode" = real key presses, "vk" = virtual-key presses, "unicode" = packet keys.
+mode = "scancode"
+# Citrix scrambles capitals/symbols when Shift changes too fast, but plain keys can go
+# quickly. Run "dictate.py --calibrate" to find the fastest values your session accepts.
+key_hold_ms = 10         # how long each key stays down
+key_gap_ms = 5           # pause between keys
+modifier_delay_ms = 40   # pause after Shift goes down or up
+trailing_space = true
+
+[commands]
+# Spoken phrase -> text to type instead (case-insensitive). "\n" presses Enter.
+"new line" = "\n"
+"new paragraph" = "\n\n"

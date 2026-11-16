@@ -1,0 +1,6 @@
+faster-whisper>=1.1
+sounddevice>=0.5
+numpy
+# NVIDIA GPU acceleration (optional - the app falls back to CPU without these)
+nvidia-cublas-cu12
+nvidia-cudnn-cu12>=9,<10
